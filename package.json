@@ -1,0 +1,22 @@
+{
+  "name": "qiqi-bot",
+  "version": "1.0.0",
+  "description": "Qiqi Bot for Discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suddenlyeva/qiqi-bot.git"
+  },
+  "author": "EvaRia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suddenlyeva/qiqi-bot/issues"
+  },
+  "homepage": "https://github.com/suddenlyeva/qiqi-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
+}
