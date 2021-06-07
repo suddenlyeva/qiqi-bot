@@ -102,7 +102,7 @@ client.on('message', async msg => {
           .setFooter('Pending')
           .setTimestamp();
     
-        const request = await mod_channel.send('', {
+        const request = await mod_channel.send(config.verifier_role, {
           component: row,
           embed
         })
