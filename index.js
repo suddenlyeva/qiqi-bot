@@ -19,6 +19,25 @@ client.on('ready', async () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+
+client.on('guildMemberAdd', member => {
+  
+  if (member.bot) {
+    return;
+  }
+
+  localStorage.removeItem(member.id + ':status')
+  localStorage.removeItem(member.id + ':request_id')
+
+  const embed = new Discord.MessageEmbed()
+    .setColor(431075)
+    .setTitle(config.greet_title)
+    .setDescription(config.greet_desc)
+    .setTimestamp();
+
+  member.send(embed);
+});
+
 client.on('message', async msg => {
 
   if (msg.author.bot) {
