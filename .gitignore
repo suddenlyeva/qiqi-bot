@@ -105,3 +105,6 @@ dist
 
 # Configuration Files
 config.js
+
+# Database
+localStorage
