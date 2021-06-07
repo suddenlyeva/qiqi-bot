@@ -97,7 +97,7 @@ client.on('message', async msg => {
         const embed = new Discord.MessageEmbed()
           .setAuthor(msg.author.tag + ' requested verification:', msg.author.avatarURL())
           .setColor(0xf2da80)
-          .setDescription(msg.content)
+          .setDescription('>>> ' + msg.content)
           .addField('User Info:','<@' + msg.author.id + '>')
           .setFooter('Pending')
           .setTimestamp();
