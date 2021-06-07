@@ -106,6 +106,7 @@ client.on('message', async msg => {
           component: row,
           embed
         })
+        msg.react(config.react_emoji)
 
         localStorage.setItem(msg.author.id + ':status', 'PENDING')
         localStorage.setItem(msg.author.id + ':request_id', request.id)
@@ -121,10 +122,11 @@ client.on('message', async msg => {
           .setDescription(old_embed.description + '\n-----\n' + msg.content)
           .setTimestamp()
 
-        existing_request.edit('', {
+        await existing_request.edit('', {
           component: existing_request.components[0],
           embed: new_embed
         })
+        msg.react(config.react_emoji)
       }
     }
   }
