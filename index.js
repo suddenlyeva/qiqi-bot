@@ -50,7 +50,7 @@ client.on('guildMemberAdd', member => {
       return;
     }
 
-    localStorage.removeItem(member.id + ':status')
+    localStorage.setItem(member.id + ':status', 'JOINED')
     localStorage.removeItem(member.id + ':request_id')
 
     const embed = new Discord.MessageEmbed()
@@ -78,7 +78,7 @@ client.on('message', async msg => {
 
     if (msg.channel.type == 'dm') {
 
-      if (localStorage.getItem(msg.author.id + ':status') == null) {
+      if (localStorage.getItem(msg.author.id + ':status') === 'JOINED') {
 
         const accept_button = new disbut.MessageButton()
           .setLabel('Accept')
