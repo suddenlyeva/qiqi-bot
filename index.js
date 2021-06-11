@@ -94,10 +94,16 @@ client.on('message', async msg => {
           .addComponent(accept_button)
           .addComponent(deny_button);
     
+        let attachment_string = '';
+
+        msg.attachments.forEach(attachment => {
+          attachment_string += '\nATTACHED: ' + attachment.url
+        })
+
         const embed = new Discord.MessageEmbed()
           .setAuthor(msg.author.tag + ' requested verification:', msg.author.avatarURL())
           .setColor(0xf2da80)
-          .setDescription('>>> ' + msg.content)
+          .setDescription('>>> ' + msg.content + attachment_string)
           .addField('User Info:','<@' + msg.author.id + '>')
           .setFooter('Pending')
           .setTimestamp();
@@ -117,9 +123,15 @@ client.on('message', async msg => {
         const existing_request = await mod_channel.messages.fetch(existing_request_id)
 
         const old_embed = existing_request.embeds[0]
+    
+        let attachment_string = '';
+
+        msg.attachments.forEach(attachment => {
+          attachment_string += '\nATTACHED: ' + attachment.url
+        })
 
         const new_embed = old_embed
-          .setDescription(old_embed.description + '\n-----\n' + msg.content)
+          .setDescription(old_embed.description + '\n-----\n' + msg.content + attachment_string)
           .setTimestamp()
 
         await existing_request.edit('', {
