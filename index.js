@@ -44,7 +44,7 @@ client.on('ready', async () => {
 });
 
 
-client.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', async member => {
   try {
     if (member.bot) {
       return;
@@ -59,10 +59,22 @@ client.on('guildMemberAdd', member => {
       .setDescription(config.greet_desc)
       .setTimestamp();
 
-    member.send(embed);
+    await member.send(embed);
   }
   catch (e) {
-    report(e)
+    if (e.code === 50007) {
+
+      const embed = new Discord.MessageEmbed()
+        .setColor(0xed904a)
+        .setDescription('Unable to send greeting message to <@' + member.id + '>.')
+        .setTimestamp();
+
+      mod_channel.send(embed)
+
+    }
+    else {
+      report(e)
+    }
   }
 });
 
